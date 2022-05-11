@@ -41,3 +41,4 @@ for item in data['playlists']['items']:
     playlist_url = api_url + 'playlists/{playlist_id}'.format(playlist_id=item['id'])
     playlist_info = spotify_request(playlist_url, header)
     logging.info('Total followers: ' + str(playlist_info['followers']['total']))
+    save_file('playlist.json', playlist_info)
