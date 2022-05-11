@@ -1,2 +1,4 @@
 data.json
 credentials.py
+*.pyc
+__pycache__
