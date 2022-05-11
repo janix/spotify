@@ -21,13 +21,23 @@ token = token.json()['access_token']
 
 #logging.info(token)
 
+def save_file(filename, data):
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=4, sort_keys=True)
+
+def spotify_request(url, header):
+    response = requests.get(url=url, headers=header)
+    return response.json()
+
 api_url = "https://api.spotify.com/v1/"
 header = {'Accept': 'application/json', 'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
 url = api_url + 'search?q=' + sys.argv[1] + '&type=playlist'
-logging.info(url)
-response = requests.get(url=url, headers=header)
-with open('data.json', 'w') as file:
-    json.dump(response.json(), file, indent=4, sort_keys=True)
 
-for item in response.json()['playlists']['items']:
-    logging.info('Playlist name: ' + item['name'] + '\tOwner: ' + item['owner']['display_name'])
+data = spotify_request(url, header)
+save_file('data.json', data)
+
+for item in data['playlists']['items']:
+    logging.info(item['name'] + '\tOwner: ' + item['owner']['display_name'] + '\t' + item['external_urls']['spotify'])
+    playlist_url = api_url + 'playlists/{playlist_id}'.format(playlist_id=item['id'])
+    playlist_info = spotify_request(playlist_url, header)
+    logging.info('Total followers: ' + str(playlist_info['followers']['total']))
