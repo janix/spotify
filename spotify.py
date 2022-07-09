@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/opt/homebrew/bin/python3
 
 import sys
 import requests
@@ -19,7 +19,7 @@ token_data =  {
 token = requests.post(token_url, token_data)
 token = token.json()['access_token']
 
-#logging.info(token)
+logging.info(token)
 
 def save_file(filename, data):
     with open(filename, 'a') as file:
@@ -42,7 +42,7 @@ for item in data['artists']['items']:
     artist_info = spotify_request(artist_url, header)
     #save_file('top-tracks.json', artist_info)
     for track in artist_info['tracks']:
-        logging.info(track['name'] + ' \t| popularity: ' + str(track['popularity']))
+        logging.info(f"{track['name'] : <60}" + '| popularity ' + str(track['popularity']))
     # logging.info(item['name'] + '\tOwner: ' + item['owner']['display_name'] + '\t' + item['external_urls']['spotify'])
     # playlist_url = api_url + 'playlists/{playlist_id}'.format(playlist_id=item['id'])
     # playlist_info = spotify_request(playlist_url, header)
