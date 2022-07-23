@@ -11,14 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install necessary packages
-        run: sudo apt install python3.8 cython3 build-essential
+      - name: Install python and c stuff
+        run: sudo apt install python3.8 build-essential
+      - name: Install cython
+        run: pip install Cython
       - name: check directory location
         run: pwd
       - name: list files
         run: ls -laGh
       - name: Compile to c file via Cython
-        run: cython3 --embed -o spotify.c spotify.py
+        run: python3 setup.py
       - name: Compile executable file with Cython
         run: gcc -Os -I /usr/include/python3.8 spotify.c -lpython3.8 -o spotify
       - name: check generated files
@@ -40,10 +42,7 @@ jobs:
         run: pip install Cython
       - name: Compile to .c file via Cython
         shell: cmd
-        run: cython3 --embed -o spotify.c spotify.py
-      - name: check directory location
-        shell: powershell
-        run: pwd
+        run: python3 setup.py
       - name: list file
         shell: powershell
         run: ls
