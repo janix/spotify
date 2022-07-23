@@ -34,7 +34,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: microsoft/setup-msbuild@v1.1
+      - uses: ilammy/msvc-dev-cmd@v1
       - name: My location (pwd)
         shell: powershell
         run: pwd
@@ -52,7 +52,7 @@ jobs:
         run: ls
       - name: msbuild helper
         shell: powershell
-        run: msbuild /?
+        run: cl /?
       - name: Compile spotify.c
         shell: powershell
-        run: msbuild /t:ClCompile /p:SelectedFiles=spotify.c
+        run: cl spotify.c
