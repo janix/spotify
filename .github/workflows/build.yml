@@ -34,10 +34,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install neccesary modules
         shell: powershell
-        run: Install-Module Python3 Cython3 -Force -Verbose
+        run: choco install -y python3 cython3
       - name: Compile to .c file via Cython
         shell: cmd
         run: cython3 --embed -o spotify.c spotify.py
+      - name: check directory location
+        shell: powershell
+        run: pwd
       - name: list file
         shell: powershell
         run: ls
