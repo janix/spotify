@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install necessary packages
-        run: sudo apt install python3 cython3 build-essentials
+        run: sudo apt install python3 cython3 build-essential
       - name: check directory location
         run: pwd
       - name: list files
