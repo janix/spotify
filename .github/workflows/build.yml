@@ -55,4 +55,4 @@ jobs:
         run: cl /?
       - name: Compile spotify.c
         shell: powershell
-        run: cl /Os /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include /link python39.lib spotify.c
+        run: cl /Os /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include python39.lib spotify.c
