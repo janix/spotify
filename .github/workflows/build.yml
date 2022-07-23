@@ -40,7 +40,7 @@ jobs:
         run: pwd
       - name: Test python3
         shell: powershell
-        run: where python
+        run: ls C:\hostedtoolcache\windows\Python\3.9.13\
       - name: Install cython
         shell: powershell
         run: pip install Cython
