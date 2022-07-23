@@ -1,4 +1,0 @@
-- sudo apt install python3 build-essentials
-- pip install Cython
-- python3 setup.py
-- gcc -Os -I /usr/include/python3.10/ spotify.c -lpython3.10 -o spotify
