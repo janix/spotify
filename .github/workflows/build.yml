@@ -33,12 +33,8 @@ jobs:
   Windows-build:
     runs-on: windows-latest
     steps:
-<<<<<<< HEAD
       - uses: actions/checkout@v3
-=======
-      - uses: actions/checkout@v2
       - uses: microsoft/setup-msbuild@v1.1
->>>>>>> ff8e34e7df8b3368367ff7409f15fa0e44f15f57
       - name: My location (pwd)
         shell: powershell
         run: pwd
