@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  Ubuntu-buils:
+  Ubuntu-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,5 +17,7 @@ jobs:
         run: pwd
       - name: list files
         run: ls -laGh
+      - name: Compile to c file via Cython
+        run: cython3 --embed -o spotify.c spotify.py
       - name: Compile executable file with Cython
         run: gcc -Os -I /usr/include/python3.10/ spotify.c -lpython3.10 -o spotify
