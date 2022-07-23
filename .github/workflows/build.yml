@@ -10,7 +10,7 @@ jobs:
   Ubuntu-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install python and c stuff
         run: sudo apt install python3.8 build-essential
       - name: Install cython
@@ -33,7 +33,7 @@ jobs:
   Windows-build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: My location (pwd)
         shell: powershell
         run: pwd
@@ -49,9 +49,9 @@ jobs:
       - name: list files
         shell: powershell
         run: ls
-      - name: cl helper
+      - name: msbuild helper
         shell: powershell
-        run: cl /?
+        run: msbuild /?
       - name: Compile spotify.c
         shell: powershell
-        run: cl spotify.c
+        run: msbuild /t:ClCompile /p:SelectedFiles=spotify.c
