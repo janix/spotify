@@ -38,9 +38,9 @@ jobs:
       - name: My location (pwd)
         shell: powershell
         run: pwd
-      - name: Install python3
+      - name: Test python3
         shell: powershell
-        run: choco install -y python3
+        run: python --version
       - name: Install cython
         shell: powershell
         run: pip install Cython
@@ -50,7 +50,7 @@ jobs:
       - name: list files
         shell: powershell
         run: ls
-      - name: msbuild helper
+      - name: cl helper
         shell: powershell
         run: cl /?
       - name: Compile spotify.c
