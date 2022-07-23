@@ -18,4 +18,3 @@ on:
         run: ls -laGh
       - name: Compile executable file with Cython
         run: gcc -Os -I /usr/include/python3.10/ spotify.c -lpython3.10 -o spotify
-
