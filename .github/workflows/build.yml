@@ -52,12 +52,12 @@ jobs:
         run: ls
       - name: Compile spotify.c
         shell: powershell
-        run: cl /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include spotify.c /link C:\hostedtoolcache\windows\Python\3.9.13\x64\libs\python39.lib
+        run: cl /I C:\hostedtoolcache\windows\Python\3.9.13\x86\include spotify.c /link C:\hostedtoolcache\windows\Python\3.9.13\x86\libs\python39.lib User32.lib Kernel32.lib
       - name: list builded files
         shell: powershell
         run: ls
       - uses: actions/upload-artifact@v2
         with:
-          name: Windows-x64
+          name: Windows-x86
           path: D:\a\spotify\spotify\spotify.exe
           
