@@ -34,6 +34,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: microsoft/setup-msbuild@v1.1
       - name: My location (pwd)
         shell: powershell
         run: pwd
