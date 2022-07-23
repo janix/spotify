@@ -1,5 +1,7 @@
 *.json
-credentials.py
+#credentials.py
 *.pyc
 __pycache__
 .vscode
+spotify
+spotify.c

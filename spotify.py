@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/python3
+#!/usr/bin/python3
 
 import sys
 import requests
@@ -19,7 +19,7 @@ token_data =  {
 token = requests.post(token_url, token_data)
 token = token.json()['access_token']
 
-logging.info(token)
+#logging.info(token)
 
 def save_file(filename, data):
     with open(filename, 'a') as file:
