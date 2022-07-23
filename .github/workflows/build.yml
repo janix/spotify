@@ -40,7 +40,7 @@ jobs:
         run: pwd
       - name: Test python3
         shell: powershell
-        run: python --version
+        run: where python
       - name: Install cython
         shell: powershell
         run: pip install Cython
