@@ -34,6 +34,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - name: My location (pwd)
+        shell: powershell
+        run: pwd
       - name: Install python3
         shell: powershell
         run: choco install -y python3
@@ -43,7 +46,12 @@ jobs:
       - name: Compile to .c file via Cython
         shell: cmd
         run: python3 setup.py
-      - name: list file
+      - name: list files
         shell: powershell
         run: ls
-        
+      - name: cl helper
+        shell: powershell
+        run: cl /?
+      - name: Compile spotify.c
+        shell: powershell
+        run: cl spotify.c
