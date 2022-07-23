@@ -53,3 +53,11 @@ jobs:
       - name: Compile spotify.c
         shell: powershell
         run: cl /Os /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include spotify.c /link /LIBPATH C:\hostedtoolcache\windows\Python\3.9.13\x64\libs\python39.lib
+      - name: list builded files
+        shell: powershell
+        run: ls
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Windows-x64
+          path: D:\a\spotify\spotify\spotify.exe
+          
