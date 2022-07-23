@@ -32,9 +32,12 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install neccesary modules
+      - name: Install python3
         shell: powershell
-        run: choco install -y python3 cython3
+        run: choco install -y python3
+      - name: Install cython
+        shell: powershell
+        run: pip install Cython
       - name: Compile to .c file via Cython
         shell: cmd
         run: cython3 --embed -o spotify.c spotify.py
