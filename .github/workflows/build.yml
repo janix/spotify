@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install necessary packages
-        run: sudo apt install python3 cython3 build-essential
+        run: sudo apt install python3.8 cython3 build-essential
       - name: check directory location
         run: pwd
       - name: list files
@@ -27,4 +27,18 @@ jobs:
         with:
           name: Ubuntu-x64
           path: /home/runner/work/spotify/spotify/spotify
- 
+  
+  Windows-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install neccesary modules
+        shell: powershell
+        run: Install-Module Python3 Cython3 -Force -Verbose
+      - name: Compile to .c file via Cython
+        shell: cmd
+        run: cython3 --embed -o spotify.c spotify.py
+      - name: list file
+        shell: powershell
+        run: ls
+        
