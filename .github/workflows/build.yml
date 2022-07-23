@@ -40,7 +40,7 @@ jobs:
         run: pwd
       - name: Test python3
         shell: powershell
-        run: ls C:\hostedtoolcache\windows\Python\3.9.13\x64
+        run: ls C:\hostedtoolcache\windows\Python\3.9.13\x64\Lib\
       - name: Install cython
         shell: powershell
         run: pip install Cython
@@ -50,9 +50,6 @@ jobs:
       - name: list files
         shell: powershell
         run: ls
-      - name: cl helper
-        shell: powershell
-        run: cl /?
       - name: Compile spotify.c
         shell: powershell
-        run: cl /Os /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include spotify.c /link /LIBPATH C:\hostedtoolcache\windows\Python\3.9.13\x64\Lib
+        run: cl /Os /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include spotify.c /link /LIBPATH C:\hostedtoolcache\windows\Python\3.9.13\x64\Lib\python39.lib
