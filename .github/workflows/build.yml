@@ -21,3 +21,5 @@ jobs:
         run: cython3 --embed -o spotify.c spotify.py
       - name: Compile executable file with Cython
         run: gcc -Os -I /usr/include/python3.8 spotify.c -lpython3.8 -o spotify
+      - name: check generated files
+        run: ls -laGh
