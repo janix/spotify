@@ -52,7 +52,7 @@ jobs:
         run: ls
       - name: Compile spotify.c
         shell: powershell
-        run: cl /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include spotify.c /LINK C:\hostedtoolcache\windows\Python\3.9.13\x64\libs\python39.lib
+        run: cl /I C:\hostedtoolcache\windows\Python\3.9.13\x64\include spotify.c /link C:\hostedtoolcache\windows\Python\3.9.13\x64\libs\python39.lib
       - name: list builded files
         shell: powershell
         run: ls
