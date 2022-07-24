@@ -46,21 +46,21 @@ class Spotify:
             #save_file('top-tracks.json', artist_info)
             for track in artist_info['tracks']:
                 logging.info(f"{track['name'] : <60}" + '| popularity ' + str(track['popularity']))
-        self.save_file('artist.json', data)
+        #self.save_file('artist.json', data)
 
     def searchFromSpotify(self, name, typ):
         url = self.api_url + 'search?q=' + name + '&type=' + typ
         data = self.spotify_request(url)
-        self.save_file('data.json', data)
+        #self.save_file('data.json', data)
         for item in data['playlists']['items']:
-            logging.info(f"{item['name'] : <35}"+ '\tOwner: ' + f"{item['owner']['display_name'] : <20}"  + item['external_urls']['spotify'])
             self.getPlaylistInfoFromSpotify(item)
 
     def getPlaylistInfoFromSpotify(self, item):
+        logging.info(f"{item['name'] : <35}"+ '\tOwner: ' + f"{item['owner']['display_name'] : <20}"  + item['external_urls']['spotify'])
         playlist_url = self.api_url + 'playlists/{playlist_id}'.format(playlist_id=item['id'])
         playlist_info = self.spotify_request(playlist_url)
         logging.info('Total followers: ' + str(playlist_info['followers']['total']))
-        self.save_file('playlist.json', playlist_info)
+        #self.save_file('playlist.json', playlist_info)
 
 def main():
     spotify = Spotify()
@@ -72,4 +72,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
+    input("Czekaj na zamknięcie programu: ")
