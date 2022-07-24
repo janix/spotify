@@ -4,7 +4,6 @@ import requests
 import logging
 import credentials
 import json
-from pynput import keyboard
 
 
 logging.basicConfig(format='%(message)s', level=logging.INFO)
@@ -43,20 +42,20 @@ def getDataFromSpotify():
         # logging.info('Total followers: ' + str(playlist_info['followers']['total']))
         # save_file('playlist.json', playlist_info)
 
-def on_press(key):
-    if key == keyboard.Key.esc:
-        return False
-        
+
 if __name__ == '__main__':
     keeping_loop = True
     while(keeping_loop):
         artist = input("\nPodaj ulubionego artystę: ")
-        api_url = "https://api.spotify.com/v1/"
-        header = {'Accept': 'application/json', 'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
-        url = api_url + 'search?q=' + artist + '&type=artist'
+        if artist == "":
+            keeping_loop = False
+            break
+        else:
+            api_url = "https://api.spotify.com/v1/"
+            header = {'Accept': 'application/json', 'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
+            url = api_url + 'search?q=' + artist + '&type=artist'
 
-        data = spotify_request(url, header)
-        save_file('data.json', data)
-        getDataFromSpotify()
-        with keyboard.Listener(on_press=on_press) as listener:
-            listener.join()
+            data = spotify_request(url, header)
+            save_file('data.json', data)
+            getDataFromSpotify()
+
